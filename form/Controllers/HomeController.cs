@@ -33,5 +33,11 @@ namespace form.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [HttpPost]
+        public IActionResult SubmitForm(string nom, string prenom, string email, string adresse, string sexe, string[] role)
+        {
+            ViewData["Message"] = $"Nom: {nom}, Prénom: {prenom}, Email: {email}, Adresse: {adresse}, Sexe: {sexe}, Rôle: {string.Join(", ", role)}";
+            return View("Confirmation");
+        }
     }
 }
